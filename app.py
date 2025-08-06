@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 import google.generativeai as genai
 
 # --- Set your Google Gemini API key ---
@@ -23,56 +24,37 @@ st.markdown('<h1 class="center-title">🤖 LogexSmartAI</h1>', unsafe_allow_html
 st.markdown('<p class="center-title" style="font-size:20px;">Real-Time Stock Sentiment & News Analyzer</p>', unsafe_allow_html=True)
 st.markdown('<p class="center-title" style="font-size:16px;">Made Financial News Smart</p>', unsafe_allow_html=True)
 
+scripname=pd.read_csv('newsymbol.csv')
 
-text=st.text_area("Type the Scrip name",height=100)
+text=st.selectbox("Select any NSE Scrip",scripname)
 
 # --- Prompt Template ---
 prompt = f"""
-Act as a financial analyst. You will research and analyze the below portfolio of stocks in their sentiment and news outlook review. don't include the summary of i act as a financial analyst like that instead start with overall portfolio health.
+You are a strict financial analyst. A user has typed a stock or commodity name: {text}
 
-{text}
-
-
-Objective: To provide a clear and structured overview of the portfolio’s current standing, highlighting overall health, individual stock sentiment, areas needing closer review, and recent significant news to aid in portfolio monitoring.
-Instructions & Output Format:
-Generate the output in the following specific order and format, ensuring conciseness where appropriate but providing detail in the "Stocks Requiring Further Review" segment:
-Overall Portfolio Health:
-
-
-Provide a concise, high-level statement assessing the overall health or outlook of the portfolio based on your analysis (e.g., "Healthy," "Mixed," "Challenging," "Reasonably Healthy with Areas Requiring Attention").
-Stock Sentiment & Analyst Expectations Table:
-
-
-Create a table summarizing the sentiment around news and updates for each stock in the portfolio.
-The table must have the following columns: "Stock," "News/Updates Sentiment," and "Analyst Expectations (General)."
-For "News/Updates Sentiment," use one word: "Good," "Neutral," or "Needs Review."
-For "Analyst Expectations (General)," provide a brief descriptive phrase (e.g., "Positive/Buy," "Mixed/Hold," "Mixed (Growth vs. Valuation)").
-Below the table, include a brief explanatory note defining what "Good," "Neutral," and "Needs Review" sentiment mean in this context.
-Stocks Requiring Continued Review:
-
-
-Create a dedicated section with the heading "### Stocks Requiring Further Review".
-Only include stocks from the portfolio that were marked "Needs Review" in the table.
-For each stock in this section, provide a structured analysis using the following template:
-The Stock Name in bold.
-A bulleted list identifying key Focus Areas based on recent news, challenges, or specific investor considerations (e.g., "Focus on Profitability vs. Growth," "Ambitious Capacity Expansion & Execution").
-Under each Focus Area bullet point, add an indented bullet point starting with "Why review is needed:" followed by a brief explanation of what the user should monitor regarding this specific factor and why it is important for continued investment consideration.
-Important News (Last Week):
-
-
-Create a dedicated section with the heading "### Important News Pieces from the Last Week".
-Identify the most important news pieces relevant to the portfolio stocks or the sectors/market they operate in, occurring approximately in the last 7 days from the current date. Base this on credible financial news sources.
-Present these news items as a numbered list.
-For each news item, provide:
-A concise summary (1-2 lines).
-A separate, indented line explaining its key implication or takeaway for the stock(s) or market.
-IMPORTANT CONSTRAINT: Do NOT include direct links (URLs) or citations for any of the news items. Summarize the news based on information you have access to.
+Return an analysis in this order:
+1. Current Market Condition (Table Format)
+2. Sector/Macro Trends (Table Format)
+3. Institutional Holdings & Actions (Table Format)
+4. Quarterly Results Summary (Table Format)
+5. Analyst Expectations (Table Format)
+6. News Sentiment Summary (Table Format)
+7. Expert/Firm Opinions (Table Format) 
+   **Highlight the Expert name or their strong opinions.   
+8. Influencer Tweets or Articles (Table Format)
+   **Highlight the Influencer Tweets or articles 
+9. Actionable Insights (Table Format)
+10. Important News (Last Week).
+   **Highlight the Key points in the news
+    
 Constraints:
-Act strictly as a financial analyst.
-Provide objective and unbiased analysis.
-Do NOT provide financial advice.
-Focus analysis on information from credible financial news sources and typical analyst reports.
-Adhere strictly to the specified output order and format for all segments.
+- Use real tone.
+- No "As an AI" or explanation about yourself (especially don't say I am strict financial analyst).
+- Prefer bullet points.
+- Use human-like commentary for influencers.
+- don't show the <br> this tag because many times i found this tag from the previous project
+- Do NOT include direct links (URLs) or citations for any of the news items. Summarize the news based on information you have access to.
+- All the content in the table will be short and crisp.
 
 """
 
