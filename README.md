@@ -55,5 +55,7 @@ git clone https://github.com/your-username/logexsmartai-sentiment-analyzer.git
 cd logexsmartai-sentiment-analyzer
 pip install -r requirements.txt
 
-### Live Deployment
+---
+
+## Live Deployment
 - https://logexsmartai.onrender.com
