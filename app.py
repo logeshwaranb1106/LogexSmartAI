@@ -9,6 +9,9 @@ genai.configure(api_key=GEMINI_API_KEY)
 # --- Streamlit page setup ---
 st.set_page_config(page_title="LogexSmartAI", layout="centered")
 
+scripname=pd.read_csv('newsymbol.csv')
+
+
 # --- CSS Styling ---
 st.markdown("""
     <style>
@@ -21,10 +24,8 @@ st.markdown("""
 
 
 st.markdown('<h1 class="center-title">🤖 LogexSmartAI</h1>', unsafe_allow_html=True)
-st.markdown('<p class="center-title" style="font-size:20px;">Real-Time Stock Sentiment & News Analyzer</p>', unsafe_allow_html=True)
-st.markdown('<p class="center-title" style="font-size:16px;">Made Financial News Smart</p>', unsafe_allow_html=True)
+st.markdown('<p class="center-title" style="font-size:20px;">Made Financial News Smart</p>', unsafe_allow_html=True)
 
-scripname=pd.read_csv('newsymbol.csv')
 
 text=st.selectbox("Select any NSE Scrip",scripname)
 
@@ -49,7 +50,7 @@ Return an analysis in this order:
     
 Constraints:
 - Use real tone.
-- No "As an AI" or explanation about yourself (especially don't say I am strict financial analyst).
+- No "As an AI" or explanation about yourself (especially don't I am strict financial analyst).
 - Prefer bullet points.
 - Use human-like commentary for influencers.
 - don't show the <br> this tag because many times i found this tag from the previous project
@@ -67,10 +68,8 @@ if st.button("Analyze Now"):
             if response and response.text:
                 st.markdown("### 🧾 Analysis Result:")
                 st.markdown(response.text.strip())
-
-            else:
-                st.warning("⚠️ Gemini did not return any result.")
+                st.snow()
+       
         except Exception as e:
-            st.error(f"❌ Gemini API Error: {e}")
+            st.error(f"❌ API Error: {e}")
 
-st.snow()
