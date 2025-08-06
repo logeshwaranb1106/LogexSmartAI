@@ -7,7 +7,7 @@ GEMINI_API_KEY = "AIzaSyAiKmoFCo0B0IQsVMgRK3zrEMzX1XujKfA"
 genai.configure(api_key=GEMINI_API_KEY)
 
 # --- Streamlit page setup ---
-st.set_page_config(page_title="LogexSmartAI", layout="centered")
+st.set_page_config(page_title="LogexSmartAI", layout="wide")
 
 scripname=pd.read_csv('newsymbol.csv')
 
