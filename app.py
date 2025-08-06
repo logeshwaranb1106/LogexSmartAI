@@ -20,8 +20,7 @@ st.markdown("""
 
 
 st.markdown('<h1 class="center-title">🤖 LogexSmartAI</h1>', unsafe_allow_html=True)
-st.markdown('<p class="center-title" style="font-size:20px;">Real-Time Stock Sentiment & News Analyzer
-</p>', unsafe_allow_html=True)
+st.markdown('<p class="center-title" style="font-size:20px;">Real-Time Stock Sentiment & News Analyzer</p>', unsafe_allow_html=True)
 st.markdown('<p class="center-title" style="font-size:16px;">Made Financial News Smart</p>', unsafe_allow_html=True)
 
 
