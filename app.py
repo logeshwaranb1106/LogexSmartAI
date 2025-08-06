@@ -73,13 +73,11 @@ Do NOT provide financial advice.
 Focus analysis on information from credible financial news sources and typical analyst reports.
 Adhere strictly to the specified output order and format for all segments.
 
-NOTE: provide all this thing in simple Tanglish(Tamil+English) language with fun.
-
 """
 
 # --- Submit and Generate ---
 if st.button("Analyze Now"):
-    with st.spinner("Analyzing Iruga Bhai..."):
+    with st.spinner("Analyzing. Please wait..."):
         try:
             model = genai.GenerativeModel("gemini-2.5-flash")  # use "gemini-2.0" if supported
             response = model.generate_content(prompt)
