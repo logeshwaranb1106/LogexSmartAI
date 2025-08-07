@@ -50,10 +50,11 @@ Return an analysis in this order:
     
 Constraints:
 - Use real tone.
+- Make analysis from the recent latest data of the scrip.
+- Don't show the <br> this tag because many times i found this tag from the previous project.
 - No "As an AI" or explanation about yourself (especially don't I am strict financial analyst).
 - Prefer bullet points.
 - Use human-like commentary for influencers.
-- don't show the <br> this tag because many times i found this tag from the previous project
 - Do NOT include direct links (URLs) or citations for any of the news items. Summarize the news based on information you have access to.
 - All the content in the table will be short and crisp.
 
