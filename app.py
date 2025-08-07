@@ -50,7 +50,7 @@ Return an analysis in this order:
     
 Constraints:
 - Use real tone.
-- Make analysis from the data which will be (up to date) up to till today date.
+- Make analysis from the data which will be 2025 FY (up to date) up to till today date.
 - Don't show the <br> tag.
 - No "As an AI" or explanation about yourself (especially don't I am strict financial analyst).
 - Prefer bullet points.
@@ -69,7 +69,7 @@ if st.button("Analyze Now"):
             if response and response.text:
                 st.markdown("### 🧾 Analysis Result:")
                 st.markdown(response.text.strip())
-                st.snow()
+                
        
         except Exception as e:
             st.error(f"❌ API Error: {e}")
