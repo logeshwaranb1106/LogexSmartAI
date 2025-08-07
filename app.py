@@ -50,8 +50,8 @@ Return an analysis in this order:
     
 Constraints:
 - Use real tone.
-- Make analysis from the recent latest data of the scrip.
-- Don't show the <br> this tag because many times i found this tag from the previous project.
+- Make analysis from the data which will be (up to date) up to till today date.
+- Don't show the <br> tag.
 - No "As an AI" or explanation about yourself (especially don't I am strict financial analyst).
 - Prefer bullet points.
 - Use human-like commentary for influencers.
